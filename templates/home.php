@@ -1,8 +1,8 @@
 <?php
 //On inclut le fichier dont on a besoin (ici à la racine de notre site)
-require 'Database.php';
+require '../src/DAO/DAO.php';
 //Ne pas oublier d'ajouter le fichier Article.php
-require 'Article.php';
+require '../src/DAO/ArticleDAO.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
