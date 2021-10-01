@@ -23,10 +23,10 @@ require 'Article.php';
         ?>
         <div>
             //On ajoute l'identifiant articleId de notre article et on dirige vers single.php
-            <h2><a href="single.php?articleId=<?= htmlspecialchars($article['id']);?>"><?= htmlspecialchars($article['title']);?></a></h2>
-            <p><?= htmlspecialchars($article['content']);?></p>
-            <p><?= htmlspecialchars($article['author']);?></p>
-            <p>Créé le : <?= htmlspecialchars($article['createdAt']);?></p>
+            <h2><a href="single.php?articleId=<?= htmlspecialchars($article->id);?>"><?= htmlspecialchars($article->title);?></a></h2>
+            <p><?= htmlspecialchars($article->content);?></p>
+            <p><?= htmlspecialchars($article->author);?></p>
+            <p>Créé le : <?= htmlspecialchars($article->createdAt);?></p>
         </div>
         <br>
         <?php
