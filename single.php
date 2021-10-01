@@ -32,5 +32,6 @@ require 'Article.php';
     $articles->closeCursor();
     ?>
 </div>
+<a href="home.php">Retour à l'accueil</a>
 </body>
 </html>
