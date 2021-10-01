@@ -18,7 +18,7 @@ require '../src/DAO/CommentDAO.php';
     <h1>Mon blog</h1>
     <p>En construction</p>
     <?php
-    $article = new Article();
+    $article = new \App\src\DAO\ArticleDAO();
     $articles = $article->getArticle($_GET['articleId']);
     $article = $articles->fetch()
     ?>
