@@ -36,19 +36,17 @@
         }
     }
     //On cree méthode createQuery qui prend 1 requette sql et des parametres null par defaut pour du query
+   
     protected function createQuery($sql, $parameters = null)
     {
         if($parameters)
         {
-            $result = $this->getConnection()->prepare($sql);
-            $result->execute($parameters);
+            $result = $this->checkConnection()->prepare($sql);
+            $result->setFetchMode(PDO::FETCH_CLASS,static::class);
             return $result;
         }
-        $result = $this->getConnection()->query($sql);
-        return $result;
+            $result = $this->checkConnection()->query($sql);
+            $result->setFetchMode(PDO::FETCH_CLASS,static::class);
+            return $result;
+        }   
     }
-}
-//l'attribut  $connection  stocke la connexion si celle-ci existe, sinon renvoie  null
-//- la méthode  checkConnection()  teste si  $connection  est  null  , et appelle  getConnection()  pour créer une nouvelle connexion. Si  $connection  a une connexion existante, la méthode renvoie celle-ci ;
-//- la méthode  getConnection()  fait la même chose que précédemment, mais renvoie la connexion dans la propriété  $connection
-//- la méthode  createQuery()  a été modifiée, pour vérifier si la connexion existe avant d'en faire une nouvelle au besoin.
