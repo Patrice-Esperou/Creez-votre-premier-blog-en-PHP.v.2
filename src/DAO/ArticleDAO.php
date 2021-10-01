@@ -1,4 +1,5 @@
 <?php
+namespace App\src\DAO;
 
 class Article extends Database
 {     //Création de la methode getarticles (liste d'articles)
