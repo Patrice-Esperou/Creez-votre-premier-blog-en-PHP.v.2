@@ -16,7 +16,7 @@ require '../src/DAO/ArticleDAO.php';
     <h1>Mon blog</h1>
     <p>En construction</p>
     <?php
-    $article = new Article();
+    $article = new \App\src\DAO\ArticleDAO();
     $articles = $article->getArticles();
     while($article = $articles->fetch())
     {
