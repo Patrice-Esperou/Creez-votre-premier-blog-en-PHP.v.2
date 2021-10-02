@@ -3,6 +3,7 @@
 namespace App\src\controller;
 use App\src\DAO\ArticleDAO;
 use App\src\DAO\CommentDAO;
+use App\src\model\View;
 
 class FrontController
 {
@@ -23,7 +24,7 @@ class FrontController
 
     public function article($articleId)
     {
-        $articles = $this->articleDAO->getArticle($articleId);
+        $article = $this->articleDAO->getArticle($articleId);
         $comments = $this->commentDAO->getCommentsFromArticle($articleId);
         require '../templates/single.php';
     }
