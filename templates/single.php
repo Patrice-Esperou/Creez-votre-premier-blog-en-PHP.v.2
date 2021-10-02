@@ -1,11 +1,11 @@
 <?php
-//On inclut le fichier dont on a besoin (ici à la racine de notre site)
-require '../src/DAO/DAO.php';
-//Ne pas oublier d'ajouter le fichier Article.php
-require '../src/DAO/ArticleDAO.php';
-require '../src/DAO/CommentDAO.php';
-?>
+require '../config/Autoloader.php';
+use \App\config\Autoloader;
+Autoloader::register();
 
+use App\src\DAO\ArticleDAO;
+use App\src\DAO\CommentDAO;
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -18,7 +18,7 @@ require '../src/DAO/CommentDAO.php';
     <h1>Mon blog</h1>
     <p>En construction</p>
     <?php
-    $article = new \App\src\DAO\ArticleDAO();
+    $article = new ArticleDAO();
     $articles = $article->getArticle($_GET['articleId']);
     $article = $articles->fetch()
     ?>
@@ -32,13 +32,11 @@ require '../src/DAO/CommentDAO.php';
     <?php
     $articles->closeCursor();
     ?>
-</div>
-<a href="home.php">Retour à l'accueil</a>
-
-<div id="comments" class="text-left" style="margin-left: 50px">
+    <a href="home.php">Retour à l'accueil</a>
+    <div id="comments" class="text-left" style="margin-left: 50px">
         <h3>Commentaires</h3>
-        <?php //On recupere les commentaires associé a 1 article
-        $comment = new Comment();
+        <?php
+        $comment = new CommentDAO();
         $comments = $comment->getCommentsFromArticle($_GET['articleId']);
         while($comment = $comments->fetch())
         {
