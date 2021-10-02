@@ -3,21 +3,28 @@
 namespace App\src\controller;
 use App\src\DAO\ArticleDAO;
 use App\src\DAO\CommentDAO;
+
 class FrontController
 {
-    public function home()//Methode home gere affichage page d'accueil
+    private $articleDAO;
+    private $commentDAO;
+
+    public function __construct()
     {
-        $article = new ArticleDAO();
-        $articles = $article->getArticles();
+        $this->articleDAO = new ArticleDAO();
+        $this->commentDAO = new CommentDAO();
+    }
+
+    public function home()
+    {
+        $articles = $this->articleDAO->getArticles();
         require '../templates/home.php';
     }
 
     public function article($articleId)
     {
-        $article = new ArticleDAO();
-        $articles = $article->getArticle($articleId);
-        $comment = new CommentDAO();
-        $comments = $comment->getCommentsFromArticle($articleId);
+        $articles = $this->articleDAO->getArticle($articleId);
+        $comments = $this->commentDAO->getCommentsFromArticle($articleId);
         require '../templates/single.php';
     }
 }
