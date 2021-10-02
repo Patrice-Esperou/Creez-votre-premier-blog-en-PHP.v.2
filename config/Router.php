@@ -1,6 +1,7 @@
 <?php
 
 namespace App\config;
+use App\src\controller\FrontController;
 use Exception;
 
 class Router
@@ -17,8 +18,9 @@ class Router
                     echo 'page inconnue';
                 }
             }
-            else{
-                require '../templates/home.php';
+            else{//on instencie frontcontroller at appel a la methode home
+                $frontController = new FrontController();
+                $frontController->home();
             }
         }
         catch (Exception $e)
