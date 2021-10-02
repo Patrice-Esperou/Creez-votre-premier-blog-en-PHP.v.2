@@ -1,12 +1,10 @@
 <?php
 namespace App\src\DAO;
 
-class Article extends Database
+class ArticleDAO extends DAO
 {     //Création de la methode getarticles (liste d'articles)
     public function getArticles()
-    {
-        
-        
+    {               
         $sql ='SELECT id, title, content, author, createdAt FROM article ORDER BY id DESC';
         return $this->createQuery($sql);
     }
