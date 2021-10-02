@@ -3,7 +3,7 @@ namespace App\src\DAO;
 // Méthode
 
 
-class Comment extends Database
+class CommentDAO extends DAO
 {
     public function getCommentsFromArticle($articleId)
     {
