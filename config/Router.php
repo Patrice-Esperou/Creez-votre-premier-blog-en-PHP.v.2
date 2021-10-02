@@ -6,21 +6,28 @@ use Exception;
 
 class Router
 {
+    private $frontController;
+
+    public function __construct()
+    {
+        $this->frontController = new FrontController();
+    }
+
     public function run()
     {
         try{
             if(isset($_GET['route']))
             {
                 if($_GET['route'] === 'article'){
-                    require '../templates/single.php';
+                   $this->frontController->article($_GET['articleId']);
+                   
                 }
                 else{
                     echo 'page inconnue';
                 }
             }
-            else{//on instencie frontcontroller at appel a la methode home
-                $frontController = new FrontController();
-                $frontController->home();
+            else{        
+                $this->frontController->home();
             }
         }
         catch (Exception $e)
