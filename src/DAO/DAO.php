@@ -1,9 +1,10 @@
 <?php
 namespace App\src\DAO;
+
 use PDO;
 use Exception;
 
- abstract class Database
+ abstract class DAO
 {
 
     //constente car sa changera pass
